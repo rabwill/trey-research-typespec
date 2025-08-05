@@ -1,0 +1,3 @@
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TreyAPI.Consultant/properties/email - The format email is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TreyAPI.Consultant/properties/consultantPhotoUrl - The format uri is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TreyAPI.Project/properties/mapUrl - The format uri is not supported by Kiota and the string type will be used.

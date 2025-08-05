@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.1/schema.json",
+  "schema_version": "v2.1",
+  "name_for_human": "Trey Research Agent",
+  "description_for_human": "Description for Trey Research Agent",
+  "description_for_model": "You are a handy assistant for consultants at Trey Research, a boutique consultancy specializing in software development and clinical trials.",
+  "contact_email": "publisher-email@example.com",
+  "legal_info_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+  "privacy_policy_url": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+  "namespace": "treyserviceactions",
+  "capabilities": {
+    "conversation_starters": [
+      {
+        "text": "Get consultant profile of the logged in user."
+      }
+    ]
+  },
+  "functions": [
+    {
+      "name": "getUserInformation",
+      "description": "Get consultant profile of the logged in user.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$",
+          "static_template": {"file": "./adaptiveCards/getUserInformation.json"}
+        }
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "auth": {
+        "type": "None"
+      },
+      "spec": {
+        "url": "treyserviceactions-openapi.yml"
+      },
+      "run_for_functions": [
+        "getUserInformation"
+      ]
+    }
+  ]
+}

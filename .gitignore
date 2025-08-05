@@ -34,5 +34,7 @@ _storage_emulator
 
 # User-specific files
 appPackage/hand-built
-
+# generated files
+appPackage/.generated
+server-config.tsp
 

@@ -36,6 +36,7 @@
             "dependsOn": [
                 "Validate prerequisites",
                 "Start local tunnel",
+                "Update TypeSpec Server URL",
                 "Create resources",
                 "Build project",
                 "Start application"
@@ -98,6 +99,17 @@
             "command": "deploy",
             "args": {
                 "env": "local"
+            }
+        },
+        {
+            "label": "Update TypeSpec Server URL",
+            "type": "shell",
+            "command": "npm run update-server-url",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "silent"
             }
         },
         {

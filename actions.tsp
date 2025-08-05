@@ -1,13 +1,19 @@
 import "@typespec/http";
 import "@microsoft/typespec-m365-copilot";
+import "./server-config.tsp";
 
 using TypeSpec.Http;
 using TypeSpec.M365.Copilot.Actions;
 
 @service
-@server(TreyAPI.SERVER_URL)
+@server(SERVER_URL)
 @actions(TreyAPI.ACTIONS_METADATA)
 namespace TreyAPI{
+  /**
+   * The base URL for the API - exported from server-config.tsp
+   */
+  const SERVER_URL = global.SERVER_URL;
+
   /**
    * Metadata for the API actions.
    */
@@ -18,11 +24,6 @@ namespace TreyAPI{
     legalInfoUrl: "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     privacyPolicyUrl: "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
   };
-
-  /**
-   * The base URL for the  API.
-   */
-  const SERVER_URL = "https://wx1gq6fz-7071.asse.devtunnels.ms/api";
 
   /**
  * Get consultant profile of the logged in user.

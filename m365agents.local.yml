@@ -74,6 +74,11 @@ provision:
     writeToEnvironmentFile:
       titleId: M365_TITLE_ID
       appId: M365_APP_ID
+  - uses: script
+    name: Ensure database
+    with:
+      run: node db-setup.js
+      workingDirectory: scripts
 deploy:
   # Install development tool(s)
   - uses: devTool/install
@@ -130,3 +135,4 @@ publish:
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
 projectId: 6e91e160-ca78-42a9-8741-60630846349e
+

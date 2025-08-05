@@ -4,14 +4,15 @@
     "scripts": {
         "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
         "dev": "func start --typescript --language-worker=\"--inspect=9229\" --port \"7071\" --cors \"*\"",
-        "build": "tsc",
-        "watch:teamsfx": "tsc --watch",
+        "build": "npm run update-server-url && tsc",
+        "watch:teamsfx": "npm run update-server-url && tsc --watch",
         "watch": "tsc -w",
         "prestart": "npm run build",
         "start": "npx func start",
         "test": "echo \"Error: no test specified\" && exit 1",
         "reset-local-db": "node ./scripts/db-setup.js UseDevelopmentStorage=true --reset",
-        "storage": "azurite --silent --location ./_storage_emulator --debug ./_storage_emulator/debug.log"
+        "storage": "azurite --silent --location ./_storage_emulator --debug ./_storage_emulator/debug.log",
+        "update-server-url": "node ./scripts/update-server-url.js"
     },
     "dependencies": {
         "@azure/functions": "^4.3.0",

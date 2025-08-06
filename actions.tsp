@@ -26,12 +26,20 @@ namespace TreyAPI{
   };
 
   /**
- * Get consultant profile of the logged in user.
+ * Retrieve the consultant profile for the logged-in user including skills, roles, certifications, location, availability, and project assignments.
  */
-
   @route("/me")
   @get  op getUserInformation(): Consultant;
-
+ /**
+ * Charge time to a specific project on behalf of the logged in user, and return the number of hours remaining in their forecast.
+ */
+  @route("/me/chargeTime")
+  @post op postBillhours(projectName:string, hours: integer): BillHoursResponse;
+ /**
+ * Get consultants working at Trey Research based on consultant name, project name, certifications, skills, roles and hours available. Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned
+ */
+  @route("/consultants")
+  @get  op getConsultants(): Consultant[];
 
   /* model definitions*/
   model Location {
@@ -54,6 +62,18 @@ namespace TreyAPI{
     forecastNextMonth: int32;
     deliveredLastMonth: int32;
     deliveredThisMonth: int32;
+  }
+
+  model BillHoursResult {
+    status: int32;
+    clientName: string;
+    projectName: string;
+    remainingForecast: int32;
+    message: string;
+  }
+
+  model BillHoursResponse {
+    results: BillHoursResult;
   }
 
   model Consultant {

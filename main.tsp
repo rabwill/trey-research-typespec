@@ -37,6 +37,7 @@ namespace TreyResearchAgent{
   @actions(global.TreyAPI.ACTIONS_METADATA)
   namespace TreyServiceActions {
     op getUserInformation is global.TreyAPI.getUserInformation;  
-   
+    op postBillhours is global.TreyAPI.postBillhours;  
+    op getConsultants is global.TreyAPI.getConsultants;   
   }
 }

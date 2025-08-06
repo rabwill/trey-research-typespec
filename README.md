@@ -10,6 +10,7 @@ TypeSpec is a language developed by Microsoft for designing and describing API c
 A declarative agent is provided to converse with users and to call the API plugin, as well as to reference the correct SharePoint document library.
 This project has only APIs for Consultants GET operations and /me GET and POST operations similar to [Lab E3 in Copilot Dev Camp](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent/) in this initial version. 
 
+![demo of the trey research agent in Copilot](./assets/demo.gif)
 
 ## Features
 
@@ -21,6 +22,7 @@ The sample showcases the following features:
 4. Copilot updates and adds data using POST requests
 5. Multi-parameter queries to filter results
 6. Show a confirmation card before POSTing data; capture missing parameters
+7. Rich adaptive card responses
 
 
 ## Contributors
@@ -43,37 +45,10 @@ The sample showcases the following features:
 
 ## Minimal path to awesome
 
-### 1. Setup document repository
-
-For this sample, we will use OneDrive to store the documents that the agent will reference.
-
-> ![NOTE]
-> You can also use SharePoint document libraries, the URL will be slightly different, but the process is the same.
-
-1. Go to [OneDrive](https://www.microsoft365.com/onedrive)
-1. Go to **My files**
-1. Create a new folder called **Legal**
-1. Upload documents from the **sampleDocs** folder in this repository to the **Legal** folder
-1. Navigate to the **Legal** folder
-1. Expand the **Details** tab on the right
-1. Expand the **More details** tab
-1. Copy the Path to the Products folder using the **Copy** button
-
 ### 2. Test the agent
 
 1. In the .env folder, create a new file called **.env.local**.
-2. Add the following line to the **.env.local** file:
-
-   ```plaintext
-   DOCUMENTS_URL=<paste the path you copied from OneDrive>
-   ```
-
-   For example, if you copied the path `https://contoso-my.sharepoint.com/personal/user_contoso_com/Documents/Legal`, it should look like this:
-
-   ```plaintext
-   DOCUMENTS_URL=https://contoso-my.sharepoint.com/personal/user_contoso_com/Documents/Legal
-   ```
-
+2. Add this `SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true` into the file.
 3. Press **F5** to start a debug session. If prompted, sign in with your [Microsoft 365 account](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts). Wait for the provisioning to complete and the browser to open.
 4. In the browser, if prompted, sign in with your Microsoft 365 account. The browser will open the declarative agent in Microsoft 365 Copilot after signing in.
 

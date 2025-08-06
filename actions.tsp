@@ -2,6 +2,7 @@ import "@typespec/http";
 import "@microsoft/typespec-m365-copilot";
 import "./server-config.tsp";
 
+
 using TypeSpec.Http;
 using TypeSpec.M365.Copilot.Actions;
 
@@ -29,16 +30,19 @@ namespace TreyAPI{
  * Retrieve the consultant profile for the logged-in user including skills, roles, certifications, location, availability, and project assignments.
  */
   @route("/me")
+  @card( #{ dataPath: "$.results",  title: "$.name", url:"$.consultantPhotoUrl", file: "cards/getUserInformation.json"}) 
   @get  op getUserInformation(): Consultant;
  /**
  * Charge time to a specific project on behalf of the logged in user, and return the number of hours remaining in their forecast.
  */
   @route("/me/chargeTime")
+  @card( #{ dataPath: "$",  title: "$.results.clientName", file: "cards/postBillhours.json"}) 
   @post op postBillhours(projectName:string, hours: integer): BillHoursResponse;
  /**
  * Get consultants working at Trey Research based on consultant name, project name, certifications, skills, roles and hours available. Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned
  */
   @route("/consultants")
+  @card( #{ dataPath: "$.results",  title: "$.name", url:"$.consultantPhotoUrl", file: "cards/getConsultants.json"}) 
   @get  op getConsultants(): Consultant[];
 
   /* model definitions*/
